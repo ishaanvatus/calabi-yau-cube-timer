@@ -4,6 +4,7 @@ import tkinter as tk
 import random
 import pickle
 import statistics as st
+import os
 
 #These are Features, not bugs:
 #first two solves dont count and first solve doesnt display the GUI elements
@@ -544,11 +545,14 @@ def start():
     tick()
 
 window = tk.Tk()
-window.state("zoomed")
+window.state("normal")
 window.title("Calabi–Yau Cube Timer")
 window.geometry(f"{height}x{width}")
-window.iconbitmap(r"icon.ico")
-
+#window.iconbitmap(r"icon.ico")
+if "nt" == os.name:
+    window.iconbitmap("icon.ico")
+else:
+    window.iconbitmap("@icon.xbm")
 
 timeLabel = tk.Label(window, fg='black',font = font)
 timeLabel.grid(row = 1, column = 5)
